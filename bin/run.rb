@@ -18,13 +18,18 @@ else
     puts "Choose a character."
     chosen_character = gets.chomp
 end
-    binding.pry
 
 # # Enter a room
-# puts "You've entered the GRAND ENTRANCE."
-# puts grand_entrance.description
-# puts "You see a dagger and a scroll - which will you choose?"
-# puts "Enter 'dagger' or 'scroll'"
-# character_item = gets.chomp
-# if character_item == 'dagger'
-#     character_id = dagger.character
+puts "You've entered the GRAND ENTRANCE."
+# puts entry_room.description
+puts "You see a dagger and a scroll - which will you choose?"
+item_id = Item.all.collect {|item| item.id}
+# binding.pry
+puts "Enter 1 for dagger or 4 for scroll"
+character_item = gets.chomp
+
+if item_id == character_item
+    puts "You've chosen #{character_item}"
+    dagger.character_id = chosen_character.id
+    binding.pry
+end
