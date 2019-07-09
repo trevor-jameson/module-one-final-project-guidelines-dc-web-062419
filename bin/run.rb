@@ -5,7 +5,7 @@ puts "WELCOME"
 puts "If you accept this quest..."
 
 # Choose a character
-puts Character.all.map {|character| character.name}
+puts Character.all.map { |character| character.name }
 puts "Enter the name of the character you'd like to use:"
 chosen_character = gets.chomp
 if chosen_character == "Harum the Witch"
@@ -23,13 +23,26 @@ end
 puts "You've entered the GRAND ENTRANCE."
 # puts entry_room.description
 puts "You see a dagger and a scroll - which will you choose?"
-item_id = Item.all.collect {|item| item.id}
+item_id = Item.all.collect { |item| item.id }
 # binding.pry
 puts "Enter 1 for dagger or 4 for scroll"
-character_item = gets.chomp
+character_item = gets.chomp.to_i
 
-if item_id == character_item
-    puts "You've chosen #{character_item}"
-    dagger.character_id = chosen_character.id
-    binding.pry
+# depending on what the user chooses, we need to set that item's character_id to
+# the user's character
+Item.all.each do |item|
+    if item.id == character_item
+        item.character_id = chosen_character.id
+        item.save
+    end
 end
+
+binding.pry
+
+# if character_item == 1
+#     return Item.find(1)
+#     binding.pry
+#     # puts "You've chosen dagger"
+#     # if character_item == [point to an item instance].id 
+#     # dagger.character_id = chosen_character.id
+# end
