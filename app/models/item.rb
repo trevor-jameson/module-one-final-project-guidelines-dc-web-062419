@@ -1,6 +1,4 @@
-class Item
-    def initialize
-        @name = name
-        @damage = damage
-    end
+class Item < ActiveRecord::Base
+    belongs_to :character
+    belongs_to :room
 end
