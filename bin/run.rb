@@ -21,20 +21,26 @@ chosen_character = gets.chomp
 
 # # Enter a room
 puts "You've entered the Grand Entrance."
+chosen_character.room_id = Room.find(1).id
+chosen_character.save
 
 # enter this room - 
 
 # write method to update the character's room_id
 # chosen_character.room_id = room.id
+dagger = Item.find(1)
+dagger.room_id = Room.find(1).id
+dagger.save
 
+scroll = Item.find(4)
+scroll.room_id = Room.find(1).id
+scroll.save
 
 puts "You see a dagger and a scroll - which will you choose?"
 
 # write method to update the items' room_ids
 
 item_id = Item.all.collect { |item| item.id }
-
-# binding.pry
 
 puts "Enter 1 for dagger or 4 for scroll"
 
