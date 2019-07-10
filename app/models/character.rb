@@ -19,14 +19,14 @@ class Character < ActiveRecord::Base
         @chosen_character = Character.where(name: @chosen_character).first
     end
     
-    def self.welcome_chosen_character
-        puts "Welcome to the castle, #{@chosen_character.name}"
+    def self.welcome_to_entrance
+        puts "Welcome to the game, #{@chosen_character.name}"
+        @chosen_character.room_id = Room.find_by(name: "Grand Entrance").id 
+        @chosen_character.save
+        puts "You're now in the Grand Entrance"
     end
-    
-    # # Enter a room
-    # def self.update_chosen_character_room_id
-    #     # binding.pry
-    #     @chosen_character.room_id = Room.find(1).id
-    #     @chosen_character.save
+
+    # def self.enters_room
+    #     @chosen_character.room_id = 
     # end
 end

@@ -2,30 +2,37 @@ require_relative '../config/environment'
 require 'pry'
 
 ### WELCOME USERS TO CLI ###
-line_break = " "
+def line_break
+    puts "\n"
+end
+
 puts "Welcome, young adventurer."
 puts "If you accept this quest..."
 
-puts line_break
+line_break
 
 ### CHOOSE A CHARACTER ###
 Character.puts_out_character_names
 
-puts line_break
+line_break
 
 puts "Enter the name of the character you'd like to use:"
 Character.gets_user_input
-# Character.welcome_chosen_character
 Character.set_character_to_instance
-Character.welcome_chosen_character
 
 ### ENTER GRAND ENTRANCE ###
-puts "You've entered the Grand Entrance."
+Character.welcome_to_entrance
 # Character.update_chosen_character_room_id
 # Item.update_items_with_room_id
 
-puts "You see a dagger and a scroll - which will you choose?"
-puts "Enter 1 for dagger or 4 for scroll"
+### LIST ITEMS IN GRAND ENTRANCE ### 
+room = Room.find_by(name: "Grand Entrance")
+puts room.list_items
+
+puts "Which one do you choose?"
+item_input = gets.chomp
+# puts "You see a dagger and a scroll - which will you choose?"
+# puts "Enter 1 for dagger or 4 for scroll"
 
 # puts "You've entered the #{room}. You see #{items}."
 
