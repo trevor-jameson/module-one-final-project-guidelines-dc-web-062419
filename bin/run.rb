@@ -15,6 +15,8 @@ puts line_break
 
 puts "Enter the name of the character you'd like to use:"
 Character.gets_user_input
+# Character.welcome_chosen_character
+Character.set_character_to_instance
 Character.welcome_chosen_character
 
 ### ENTER GRAND ENTRANCE ###
@@ -24,8 +26,7 @@ puts "You've entered the Grand Entrance."
 
 puts "You see a dagger and a scroll - which will you choose?"
 puts "Enter 1 for dagger or 4 for scroll"
-entry_room = Room.where("name == Grand Entrance")
-puts entry_room.list_items_in_room
+
 # puts "You've entered the #{room}. You see #{items}."
 
 Item.get_character_item
