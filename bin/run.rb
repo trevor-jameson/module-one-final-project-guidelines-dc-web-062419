@@ -17,19 +17,19 @@ puts "Enter the name of the character you'd like to use:"
 Character.gets_user_input
 Character.welcome_chosen_character
 
-### ENTER A ROOM ###
+### ENTER GRAND ENTRANCE ###
 puts "You've entered the Grand Entrance."
-Room.update_chosen_character_room_id
-Room.update_items_with_room_id
+# Character.update_chosen_character_room_id
+# Item.update_items_with_room_id
 
 puts "You see a dagger and a scroll - which will you choose?"
+puts "Enter 1 for dagger or 4 for scroll"
+entry_room = Room.where("name == Grand Entrance")
+puts entry_room.list_items_in_room
+# puts "You've entered the #{room}. You see #{items}."
 
-# # write method to update the items' room_ids
-
-# item_id = Item.all.collect { |item| item.id }
-
-# puts "Enter 1 for dagger or 4 for scroll"
-
+Item.get_character_item
+Item.return_selection
 # character_item = gets.chomp.to_i
 
 # # depending on what the user chooses, we need to set that item's character_id to
