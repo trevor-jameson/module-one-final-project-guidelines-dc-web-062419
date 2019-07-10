@@ -20,6 +20,7 @@ puts "Enter the name of the character you'd like to use:"
 Character.gets_user_input
 Character.set_character_to_instance
 
+line_break
 ### ENTER GRAND ENTRANCE ###
 Character.welcome_to_entrance
 # Character.update_chosen_character_room_id
@@ -29,15 +30,13 @@ Character.welcome_to_entrance
 room = Room.find_by(name: "Grand Entrance")
 puts room.list_items
 
-puts "Which one do you choose?"
-item_input = gets.chomp
-# puts "You see a dagger and a scroll - which will you choose?"
-# puts "Enter 1 for dagger or 4 for scroll"
+Item.get_character_item
+Item.selected_item
 
 # puts "You've entered the #{room}. You see #{items}."
 
-Item.get_character_item
-Item.return_selection
+# Item.get_character_item
+# Item.return_selection
 # character_item = gets.chomp.to_i
 
 # # depending on what the user chooses, we need to set that item's character_id to

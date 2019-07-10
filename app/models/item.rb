@@ -12,7 +12,17 @@ class Item < ActiveRecord::Base
     # end
     
     def self.get_character_item
-        @character_item = gets.chomp.to_i
+        puts "Which one do you choose?"
+        @character_item = gets.chomp
+    end
+
+    # puts "You see a dagger and a scroll - which will you choose?"
+    # puts "Enter 1 for dagger or 4 for scroll"
+    
+    def self.selected_item
+        name = @character_item
+        Item.where("name = name")
+        puts "Great! You've selected #{name}."
     end
 
     # def self.return_selection
