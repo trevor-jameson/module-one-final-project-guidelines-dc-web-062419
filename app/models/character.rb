@@ -38,8 +38,9 @@ class Character < ActiveRecord::Base
 
     def dragon_appears?
         item_array = self.items.map { |item| item.name }
-        binding.pry
+        if item_array >= 3
+            puts "Dragon appears!"
+        end
     end
-
 
 end
