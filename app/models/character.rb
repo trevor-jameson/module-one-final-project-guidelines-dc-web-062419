@@ -26,6 +26,16 @@ class Character < ActiveRecord::Base
         puts "You're now in the Grand Entrance"
     end
 
+    def item_inventory
+        items = self.items
+        if items.length == 0
+            "You haven't picked up any items yet."
+        else
+            items_on_hand = items.map { |item| item.name }.join(" & ")
+            "Right now, you have a " + items_on_hand
+        end
+    end
+
     # def self.enters_room
     #     @chosen_character.room_id = 
     # end

@@ -32,6 +32,13 @@ puts room.list_items
 
 Item.get_character_item
 Item.selected_item
+char = Character.find_by(name: "Harum the Witch")
+chosen_item = Item.selected_item
+char.items << chosen_item
+chosen_item.character_id = char.id
+puts char.item_inventory
+
+binding.pry
 
 # puts "You've entered the #{room}. You see #{items}."
 

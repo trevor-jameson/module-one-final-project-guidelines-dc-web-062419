@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
 
     ### USE .UPDATE, & .CREATE
 
-    # Initialize items in room with room_id
+    # Initialize items in room with room_id <- MOVED ALL THIS TO ROOM.RB
     # def self.list_items_in_room
     #     Item.all.select { |item| item.room_id binding.pry }
     # end
@@ -15,14 +15,12 @@ class Item < ActiveRecord::Base
         puts "Which one do you choose?"
         @character_item = gets.chomp
     end
-
-    # puts "You see a dagger and a scroll - which will you choose?"
-    # puts "Enter 1 for dagger or 4 for scroll"
     
     def self.selected_item
         name = @character_item
-        Item.where("name = name")
-        puts "Great! You've selected #{name}."
+        item = Item.find_by(name: "#{name}")
+        # puts "Great! You've selected #{name}."
+        item
     end
 
     # def self.return_selection
@@ -35,8 +33,10 @@ class Item < ActiveRecord::Base
     #         @character_item = gets.chomp.to_i
     #     end
     # end
+
     # depending on what the user chooses, we need to set that item's character_id to
     # the user's character
+
     # Item.all.each do |item|
     #     if item.id == character_item
     #         item.character_id = chosen_character.id
