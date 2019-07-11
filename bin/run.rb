@@ -21,6 +21,7 @@ Character.gets_user_input
 char = Character.set_character_to_instance
 
 line_break
+
 ### ENTER GRAND ENTRANCE ###
 Character.welcome_to_entrance
 # Character.update_chosen_character_room_id
@@ -31,24 +32,11 @@ room = Room.find_by(name: "Grand Entrance")
 puts room.list_items
 
 Item.get_character_item
-Item.selected_item
-chosen_item = Item.selected_item
-char.items << chosen_item
-chosen_item.character_id = char.id
+Item.gets_picked_up_by(char)
 puts char.item_inventory
-binding.pry
+puts room.dragon
 
-# puts "You've entered the #{room}. You see #{items}."
 
-# Item.get_character_item
-# Item.return_selection
-# character_item = gets.chomp.to_i
-
-# # depending on what the user chooses, we need to set that item's character_id to
-# # the user's character
-# Item.all.each do |item|
-#     if item.id == character_item
-#         item.character_id = chosen_character.id
-#         item.save
-#     end
-# end
+# chosen_item = Item.selected_item
+# chosen_item.character_id = char.id
+# char.items << chosen_item

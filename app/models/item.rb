@@ -16,42 +16,11 @@ class Item < ActiveRecord::Base
         @character_item = gets.chomp
     end
     
-    def self.selected_item
+    def self.gets_picked_up_by(character)
         name = @character_item
-        item = Item.find_by(name: "#{name}")
+        item = Item.find_by(name: name)
+        item.character = character
         # puts "Great! You've selected #{name}."
-        item
     end
 
-    # def self.return_selection
-    #     if @character_item == 1
-    #         puts "You've chosen dagger"
-    #     elsif @character_item == 4
-    #         puts "You've chosen scroll"
-    #     else
-    #         puts "Enter 1 for dagger or 4 for scroll"
-    #         @character_item = gets.chomp.to_i
-    #     end
-    # end
-
-    # depending on what the user chooses, we need to set that item's character_id to
-    # the user's character
-
-    # Item.all.each do |item|
-    #     if item.id == character_item
-    #         item.character_id = chosen_character.id
-    #         item.save
-    #     end
-    # end
-
-    # if self.id == @character_item
-    #     self.character_id = @chosen_character.id
-
-    # if character_item == 1
-    #     return Item.find(1)
-    #     binding.pry
-    #     # puts "You've chosen dagger"
-    #     # if character_item == [point to an item instance].id 
-    #     # dagger.character_id = chosen_character.id
-    # end
 end

@@ -12,6 +12,16 @@ class Room < ActiveRecord::Base
             "In this room, you'll find a " + items_in_room
         end
     end
+
+    def dragon
+        # dragon appears in the room when a character who's in the room has x number of items, probably 3?
+        binding.pry
+        # depending on the item they choose to engage the dragon with the character will either: 
+        # lose to the dragon, defeat the dragon or befriend the dragon
+
+    end
+
+
     
 end
 
