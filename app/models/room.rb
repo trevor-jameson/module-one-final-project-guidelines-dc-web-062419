@@ -14,7 +14,7 @@ class Room < ActiveRecord::Base
     end
 
     def is_the_dragon_coming?
-        binding.pry
+        binding.pry 
     end
 
     def dragon_arrives

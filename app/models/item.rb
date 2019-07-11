@@ -8,7 +8,6 @@ class Item < ActiveRecord::Base
     # def self.list_items_in_room
     #     Item.all.select { |item| item.room_id binding.pry }
     # end
-    
     def self.get_character_item
         puts "Which one do you choose?"
         character_item = gets.chomp
@@ -22,8 +21,11 @@ class Item < ActiveRecord::Base
         puts "Great! You've selected #{name}."
     end
 
-    def self.gets_dropped_by(character)
-
+    def gets_dropped_by(character, room)
+        self.character = nil
+        self.room = room
+        self.save
+        puts "You've dropped your #{name}."
     end
 
 end

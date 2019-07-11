@@ -37,10 +37,15 @@ line_break
 item = Item.get_character_item
 item.gets_picked_up_by(char)
 
+### CHARACTER DROPS ITEM
+puts "Would you like to drop your item?"
+answer = gets.chomp
+
 ### CHARACTER INVENTORY
 puts char.item_inventory
 
 ### IS THE DRAGON COMING? 
+puts room.is_the_dragon_coming?
 
 
 # chosen_item = Item.selected_item
