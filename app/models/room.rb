@@ -1,5 +1,4 @@
 require 'pry'
-require 'tty-prompt'
 class Room < ActiveRecord::Base
 
     has_many :characters

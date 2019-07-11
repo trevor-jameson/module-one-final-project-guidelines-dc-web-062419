@@ -6,13 +6,15 @@ class Character < ActiveRecord::Base
     attr_accessor :chosen_character
 
     # Choose a character
-    def self.puts_out_character_names
-        puts "Here are a list of characters you can choose from:"
-        puts Character.all.map { |character| character.name }
-    end
+    # def self.puts_out_character_names
+    #     puts "Here are a list of characters you can choose from:"
+    #     puts Character.all.map { |character| character.name }
+    # end
 
     def self.gets_user_input
-        @chosen_character = gets.chomp
+        prompt = TTY::Prompt.new
+        character = Character.all.map {|character| character.name}
+        @chosen_character = prompt.select("Choose the name of the character you'd like to use:", character)
     end
 
     def self.set_character_to_instance
@@ -20,7 +22,7 @@ class Character < ActiveRecord::Base
     end
     
     def self.welcome_to_entrance
-        puts "Welcome to the game, #{@chosen_character.name}"
+        puts "Welcome to the game, #{@chosen_character.name}!"
         @chosen_character.room_id = Room.find_by(name: "Grand Entrance").id 
         @chosen_character.save
         puts "You're now in the Grand Entrance"

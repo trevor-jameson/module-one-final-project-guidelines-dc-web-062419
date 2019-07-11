@@ -14,11 +14,6 @@ puts "If you accept this quest..."
 line_break
 
 ### CHOOSE A CHARACTER ###
-Character.puts_out_character_names
-
-line_break
-
-puts "Enter the name of the character you'd like to use:"
 Character.gets_user_input
 Character.set_character_to_instance
 
@@ -29,9 +24,9 @@ Character.welcome_to_entrance
 # Item.update_items_with_room_id
 
 ### LIST ITEMS IN GRAND ENTRANCE ### 
-room = Room.find_by(name: "Grand Entrance")
+entry_room = Room.find_by(name: "Grand Entrance")
+entry_room.navigate_from_the_entrance
 
-room.navigate_from_the_entrance
 # ### ROOM NAVIGATION ###
 # # def navigate_from_entrance
 #     puts "You look around the room and you see a chest to your left, an enchantment table in front, and a bookcase to your right."
