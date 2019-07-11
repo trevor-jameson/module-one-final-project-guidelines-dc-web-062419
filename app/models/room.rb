@@ -15,12 +15,26 @@ class Room < ActiveRecord::Base
 
     def is_the_dragon_coming?
         binding.pry
-        
     end
 
     def dragon_arrives
         puts "You've now picked up enough items. The room begins to rumble. You hear a loud roar."
         puts "You turn around and what do you see?"
+        puts " <>=======()
+        (/\___   /|\\          ()==========<>_
+              \_/ | \\        //|\   ______/ \)
+                \_|  \\      // | \_/
+                  \|\/|\_   //  /\/
+                   (oo)\ \_//  /
+                  //_/\_\/ /  |
+                 @@/  |=\  \  |
+                      \_=\_ \ |
+                        \==\ \|\_ snd
+                     __(\===\(  )\
+                    (((~) __(_/   |
+                         (((~) \  /
+                         ______/ /
+                         '------'"
 
         # dragon appears in the room when a character who's in the room has x number of items, probably 3?
         binding.pry

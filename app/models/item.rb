@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-    belongs_to :characte
+    belongs_to :character
     belongs_to :room
 
     attr_accessor :character_item
@@ -18,6 +18,7 @@ class Item < ActiveRecord::Base
     end
     
     def gets_picked_up_by(character)
+        binding.pry
         self.character = character
         self.room = nil
         self.save

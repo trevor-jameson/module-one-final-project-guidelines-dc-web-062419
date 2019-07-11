@@ -31,11 +31,17 @@ Character.welcome_to_entrance
 room = Room.find_by(name: "Grand Entrance")
 puts room.list_items
 
+line_break
+
+### CHARACTER PICKS UP ITEM
 item = Item.get_character_item
 item.gets_picked_up_by(char)
+
+### CHARACTER INVENTORY
 puts char.item_inventory
 
-binding.pry
+### IS THE DRAGON COMING? 
+
 
 # chosen_item = Item.selected_item
 # chosen_item.character_id = char.id

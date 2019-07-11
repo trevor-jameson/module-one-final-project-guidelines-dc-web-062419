@@ -35,8 +35,5 @@ class Character < ActiveRecord::Base
             "Right now, you have a " + items_on_hand
         end
     end
-
-    # def self.enters_room
-    #     @chosen_character.room_id = 
-    # end
+    
 end
