@@ -13,12 +13,19 @@ class Room < ActiveRecord::Base
         end
     end
 
-    def dragon(character)
+    def is_the_dragon_coming?
+        binding.pry
+        
+    end
+
+    def dragon_arrives
+        puts "You've now picked up enough items. The room begins to rumble. You hear a loud roar."
+        puts "You turn around and what do you see?"
+
         # dragon appears in the room when a character who's in the room has x number of items, probably 3?
         binding.pry
         # depending on the item they choose to engage the dragon with the character will either: 
         # lose to the dragon, defeat the dragon or befriend the dragon
-
     end
 
 
