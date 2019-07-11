@@ -20,6 +20,7 @@ class Item < ActiveRecord::Base
         name = @character_item
         item = Item.find_by(name: name)
         item.character = character
+        item.save
         # puts "Great! You've selected #{name}."
     end
 

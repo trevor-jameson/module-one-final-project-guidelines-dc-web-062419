@@ -13,7 +13,7 @@ class Room < ActiveRecord::Base
         end
     end
 
-    def dragon
+    def dragon(character)
         # dragon appears in the room when a character who's in the room has x number of items, probably 3?
         binding.pry
         # depending on the item they choose to engage the dragon with the character will either: 

@@ -34,8 +34,8 @@ puts room.list_items
 Item.get_character_item
 Item.gets_picked_up_by(char)
 puts char.item_inventory
-puts room.dragon
 
+binding.pry
 
 # chosen_item = Item.selected_item
 # chosen_item.character_id = char.id
