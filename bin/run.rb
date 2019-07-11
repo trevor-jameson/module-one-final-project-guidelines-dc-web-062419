@@ -45,7 +45,7 @@ answer = gets.chomp
 puts char.item_inventory
 
 ### IS THE DRAGON COMING? 
-puts room.is_the_dragon_coming?
+puts char.dragon_appears?
 
 
 # chosen_item = Item.selected_item

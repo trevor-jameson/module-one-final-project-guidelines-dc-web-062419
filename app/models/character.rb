@@ -35,5 +35,11 @@ class Character < ActiveRecord::Base
             "Right now, you have a " + items_on_hand
         end
     end
-    
+
+    def dragon_appears?
+        item_array = self.items.map { |item| item.name }
+        binding.pry
+    end
+
+
 end

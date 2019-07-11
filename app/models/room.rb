@@ -13,10 +13,6 @@ class Room < ActiveRecord::Base
         end
     end
 
-    def is_the_dragon_coming?
-        binding.pry 
-    end
-
     def dragon_arrives
         puts "You've now picked up enough items. The room begins to rumble. You hear a loud roar."
         puts "You turn around and what do you see?"
