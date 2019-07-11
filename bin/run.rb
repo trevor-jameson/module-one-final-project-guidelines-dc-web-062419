@@ -18,7 +18,7 @@ line_break
 
 puts "Enter the name of the character you'd like to use:"
 Character.gets_user_input
-Character.set_character_to_instance
+char = Character.set_character_to_instance
 
 line_break
 ### ENTER GRAND ENTRANCE ###
@@ -32,12 +32,10 @@ puts room.list_items
 
 Item.get_character_item
 Item.selected_item
-char = Character.find_by(name: "Harum the Witch")
 chosen_item = Item.selected_item
 char.items << chosen_item
 chosen_item.character_id = char.id
 puts char.item_inventory
-
 binding.pry
 
 # puts "You've entered the #{room}. You see #{items}."
