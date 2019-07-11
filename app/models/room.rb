@@ -129,12 +129,12 @@ class Room < ActiveRecord::Base
             else
                 locked_chest
             end
-        elsif @direction == 'forward'
+        elsif @direction == 'Table'
             enchantment_table
             # if they select bookcase
 
             # if they select locked_chest
-        elsif @direction == 'right'
+        elsif @direction == 'Bookcase'
             bookcase
             # if they select locked_chest
 
