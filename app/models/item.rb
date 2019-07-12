@@ -18,14 +18,12 @@ class Item < ActiveRecord::Base
         self.character = character
         self.room = nil
         self.save
-        puts "Great! You've selected #{name}."
     end
 
     def gets_dropped_by(character, room)
         self.character = nil
         self.room = room
         self.save
-        puts "You've dropped your #{name}."
     end
 
 end
