@@ -55,7 +55,7 @@ class Room < ActiveRecord::Base
         end
     end
 
-    # from the entrance
+    # from the entrance - RUN
     def navigate_from_the_entrance(char)
         start_from_entrance
         locked_chest

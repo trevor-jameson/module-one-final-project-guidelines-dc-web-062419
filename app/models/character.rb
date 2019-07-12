@@ -6,12 +6,6 @@ class Character < ActiveRecord::Base
 
     attr_accessor :chosen_character
 
-    # Choose a character
-    # def self.puts_out_character_names
-    #     puts "Here are a list of characters you can choose from:"
-    #     puts Character.all.map { |character| character.name }
-    # end
-
     def self.gets_user_input
         prompt = TTY::Prompt.new
         character = Character.all.map {|character| character.name}

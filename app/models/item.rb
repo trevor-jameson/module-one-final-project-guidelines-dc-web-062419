@@ -4,10 +4,6 @@ class Item < ActiveRecord::Base
 
     ### USE .UPDATE, & .CREATE
 
-    # Initialize items in room with room_id <- MOVED ALL THIS TO ROOM.RB
-    # def self.list_items_in_room
-    #     Item.all.select { |item| item.room_id binding.pry }
-    # end
     def self.get_character_item
         puts "Which one do you choose?"
         character_item = gets.chomp
