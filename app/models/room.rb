@@ -6,16 +6,22 @@ class Room < ActiveRecord::Base
 
     attr_accessor :direction
 
+    def line_break
+        puts "\n"
+    end
+
     ### ROOM NAVIGATION ###
     ## Starting from the Entrance ##
     def start_from_entrance
         prompt = TTY::Prompt.new
         @direction = prompt.select("You look around the room and you see a chest to your left, an enchantment table in front, and a bookcase to your right.", %w(Move_to_locked_chest))
+        line_break
     end
 
     def locked_chest
         prompt = TTY::Prompt.new
         @direction = prompt.select("You walk up to a chest - it's locked.", %w(Move_to_Enchantment_Table))
+        line_break
     end
 
     def enchantment_table(char)
@@ -33,6 +39,7 @@ class Room < ActiveRecord::Base
         elsif enchantment_table_item == 'Neither'
             puts "After gazing at the table and the things around it for a while, you step away"
         end
+        line_break
         bookcase(char)
     end
 
