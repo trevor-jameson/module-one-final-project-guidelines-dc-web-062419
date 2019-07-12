@@ -43,9 +43,10 @@ class Room < ActiveRecord::Base
             puts "You pick up a potion (colorful description)"
             item = self.items.find_by(name: "Health Potion")
             item.gets_picked_up_by(char)
-        elsif enchantment_table_item == 'Crystal Ball'
+        elsif enchantment_table_item == 'Crystal_Ball'
             puts "You see something scaly in the crystal ball as you bring it closer."
-            item = self.items.find_by(name: "Crystal Ball")
+            item = self.items.find_by(name: "Crystal_Ball")
+            binding.pry
             item.gets_picked_up_by(char)
         elsif enchantment_table_item == 'Both'
             puts "You notice the rings of dust around the potion and crystal ball you picked up"
@@ -82,16 +83,16 @@ class Room < ActiveRecord::Base
     end
 
     ## Starting from the Locked Chest ##
-    def locked_chest_to_enchantment_table
+    def locked_chest_to_enchantment_table(char)
         enchantment_table(char)
     end
 
-    def locked_chest_to_bookcase
+    def locked_chest_to_bookcase(char)
         bookcase(char)
     end
 
     ## Starting from the Enchantment Table ##
-    def enchantment_table_to_bookcase
+    def enchantment_table_to_bookcase(char)
         bookcase(char)
     end
 
@@ -104,7 +105,7 @@ class Room < ActiveRecord::Base
         locked_chest
     end
 
-    def bookcase_to_enchantment_table
+    def bookcase_to_enchantment_table(char)
         enchantment_table(char)
     end
 
@@ -122,10 +123,10 @@ class Room < ActiveRecord::Base
             locked_chest
             # if they select 'left'
             if @direction == 'Table'
-                locked_chest_to_enchantment_table
+                locked_chest_to_enchantment_table(char)
             # if they select 'forward'
             elsif @direction == 'Bookcase'
-                locked_chest_to_bookcase
+                locked_chest_to_bookcase(char)
             else
                 locked_chest
             end

@@ -12,7 +12,7 @@ enchanted_room = Room.find_or_create_by(name: "Enchanted Room", description: "Th
 dungeon_room = Room.find_or_create_by(name: "Dungeon of Doom", description: "Woah what a scary room, omg wow.")
 
 dagger = Item.find_or_create_by(name: "Dagger", special: false, room: entry_room)
-crystal_ball = Item.find_or_create_by(name: "Crystal Ball", special: false, room: entry_room)
+crystal_ball = Item.find_or_create_by(name: "Crystal_Ball", special: false, room: entry_room)
 potion = Item.find_or_create_by(name: "Health Potion", special: false, room: entry_room)
 scroll = Item.find_or_create_by(name: "Spell Scroll", special: true, room: entry_room)
 
