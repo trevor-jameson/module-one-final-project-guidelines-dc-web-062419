@@ -41,7 +41,7 @@ class Room < ActiveRecord::Base
         # enchantment_table_item = gets.chomp
         if enchantment_table_item == 'Potion'
             puts "Great choice. This potion will help you in your quest."
-            item = self.items.find_by(name: "Health Potion")
+            item = self.items.find_by(name: "Health_Potion")
             item.gets_picked_up_by(char)
             bookcase(char)
         elsif enchantment_table_item == 'Crystal_Ball'
