@@ -27,16 +27,6 @@ class Room < ActiveRecord::Base
     def enchantment_table(char)
         puts "You approach the enchantment table."
         prompt = TTY::Prompt.new
-        enchantment_table_item = prompt.select("There are potions lining the edge, and a glowing crystal ball.", %w(Potion Crystal_Ball))
-        if enchantment_table_item == 'Potion'
-            puts "Great choice. This potion will help you in your quest."
-            item = self.items.find_by(name: "Health_Potion")
-            item.gets_picked_up_by(char)
-        elsif enchantment_table_item == 'Crystal_Ball'
-            puts "You see something scaly in the crystal ball as you bring it closer."
-            item = self.items.find_by(name: "Crystal_Ball")
-            item.gets_picked_up_by(char)
-        end
         enchantment_table_item = prompt.select("There are potions lining the edge, and a glowing crystal ball. You get to pick one of these items and make it yours.", %w(Potion Crystal_Ball))
             if enchantment_table_item == 'Potion'
                 puts "Great choice. This potion will help you in your quest."
@@ -53,7 +43,7 @@ class Room < ActiveRecord::Base
 
     def bookcase(char)
         prompt = TTY::Prompt.new
-        bookcase_item = prompt.select("You skim the bookcase, and see a bunch of old, dust-covered scrolls. Hiding underneath the scroll, you see a dagger.", %w(Spell_Scroll Dagger))
+        bookcase_item = prompt.select("You skim the bookcase, and see a bunch of old, dust-covered scrolls. Hiding underneath the scroll, you see a dagger. You get to pick up one of these items and make it yours", %w(Spell_Scroll Dagger))
         if bookcase_item == 'Spell_Scroll'
             puts "You pick up the scroll (colorful description)"
             item = self.items.find_by(name: "Spell_Scroll")
