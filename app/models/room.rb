@@ -33,7 +33,7 @@ class Room < ActiveRecord::Base
         @direction = prompt.select("Turn around and go left to the enchantment table, or towards the bookcase?", %w(Table Bookcase))
     end
 
-    def enchantment_table
+    def enchantment_table(char)
         puts "You approach the enchantment table (colorful description)."
         prompt = TTY::Prompt.new
         enchantment_table_item = prompt.select("There are potions lining the edge, and a glowing crystal ball.", %w(Potion Crystal_Ball Both))
@@ -41,12 +41,11 @@ class Room < ActiveRecord::Base
         # enchantment_table_item = gets.chomp
         if enchantment_table_item == 'Potion'
             puts "You pick up a potion (colorful description)"
-            # update potion
-            # and save
+            item = self.items.find_by(name: "Health Potion")
+            item.gets_picked_up_by(char)
         elsif enchantment_table_item == 'Crystal Ball'
             puts "You see something scaly in the crystal ball as you bring it closer"
-            # update crystal ball
-            # and save
+            item.gets_picked_up_by(char)
         elsif enchantment_table_item == 'Both'
             puts "You notice the rings of dust around the potion and crystal ball you picked up"
             # update with both
@@ -57,17 +56,17 @@ class Room < ActiveRecord::Base
         end
     end
 
-    def bookcase
+    def bookcase(char)
         puts "You skim the bookcase, and see a bunch of old, dust-covered scrolls."
         prompt = TTY::Prompt.new
         # if they pick up the scroll, they see dagger underneath and have option of picking it up
-        puts "Hiding underneath the scroll you grab is a dagger."
+        puts "Hiding underneath the scroll you see a dagger."
         bookcase_item = gets.chomp
-        if bookcase_item == 'potion'
+        if bookcase_item == 'Health Potion'
             puts "You pick up a potion (colorful description)"
             # update potion
             # and save
-        elsif bookcase_item == 'crystal ball'
+        elsif bookcase_item == 'Crystal Ball'
             puts "You see something scaly in the crystal ball as you bring it closer"
             # update crystal ball
             # and save
@@ -116,7 +115,7 @@ class Room < ActiveRecord::Base
     # end
 
     # from the entrance
-    def navigate_from_the_entrance
+    def navigate_from_the_entrance(char)
         start_from_entrance
         if @direction == 'Chest' #(locked)
             locked_chest
@@ -130,7 +129,7 @@ class Room < ActiveRecord::Base
                 locked_chest
             end
         elsif @direction == 'Table'
-            enchantment_table
+            enchantment_table(char)
             # if they select bookcase
 
             # if they select locked_chest

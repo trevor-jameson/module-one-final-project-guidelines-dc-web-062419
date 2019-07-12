@@ -20,36 +20,36 @@ char = Character.set_character_to_instance
 line_break
 
 ### ENTER GRAND ENTRANCE ###
-Character.welcome_to_entrance
+# Character.welcome_to_entrance
 # Character.update_chosen_character_room_id
 # Item.update_items_with_room_id
 
 ### LIST ITEMS IN GRAND ENTRANCE ### 
-room = Room.find_by(name: "Grand Entrance")
-puts room.list_items
+# room = Room.find_by(name: "Grand Entrance")
+# puts room.list_items
 
 line_break
 
 ### CHARACTER PICKS UP ITEM
-item = Item.get_character_item
-item.gets_picked_up_by(char)
+# item = Item.get_character_item
+# item.gets_picked_up_by(char)
 
 ### CHARACTER DROPS ITEM
-puts "Would you like to drop your item?"
-answer = gets.chomp
+# puts "Would you like to drop your item?"
+# answer = gets.chomp
 
 ### CHARACTER INVENTORY
-puts char.item_inventory
+# puts char.item_inventory
 
 ### IS THE DRAGON COMING? 
-puts char.dragon_appears?
+# puts char.dragon_appears?
 
 
 # chosen_item = Item.selected_item
 # chosen_item.character_id = char.id
 # char.items << chosen_item
 entry_room = Room.find_by(name: "Grand Entrance")
-entry_room.navigate_from_the_entrance
+entry_room.navigate_from_the_entrance(char)
 
 # ### ROOM NAVIGATION ###
 # # def navigate_from_entrance
