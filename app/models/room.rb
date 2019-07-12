@@ -83,16 +83,16 @@ class Room < ActiveRecord::Base
 
     ## Starting from the Locked Chest ##
     def locked_chest_to_enchantment_table
-        enchantment_table
+        enchantment_table(char)
     end
 
     def locked_chest_to_bookcase
-        bookcase
+        bookcase(char)
     end
 
     ## Starting from the Enchantment Table ##
     def enchantment_table_to_bookcase
-        bookcase
+        bookcase(char)
     end
 
     def enchantment_table_to_locked_chest
@@ -105,7 +105,7 @@ class Room < ActiveRecord::Base
     end
 
     def bookcase_to_enchantment_table
-        enchantment_table
+        enchantment_table(char)
     end
 
     # # if from locked_chest
@@ -135,7 +135,7 @@ class Room < ActiveRecord::Base
 
             # if they select locked_chest
         elsif @direction == 'Bookcase'
-            bookcase
+            bookcase(char)
             # if they select locked_chest
 
             # if they select enchantment table
