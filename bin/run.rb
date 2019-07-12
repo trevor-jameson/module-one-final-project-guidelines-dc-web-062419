@@ -12,7 +12,7 @@ def display_welcome_message
     puts "Hello, young adventurer."
 
     line_break
-    
+
     puts "It seems you have found yourself at the beginning of a rewarding quest."
     puts "Should you accept this quest, a Magical Room shall make itself and its offerings available to you."
     puts "Out of these magical items, you will be able to equip yourself in preparation for engaging with a mythical creature."
@@ -28,8 +28,11 @@ char = Character.set_character_to_instance
 
 line_break
 
+### START QUEST IN ENTRY ROOM ###
 entry_room = Room.find_by(name: "Grand Entrance")
 entry_room.navigate_from_the_entrance(char)
+
+### DRAGON TIME ###
 char.dragon_appears
 chosen_item = char.respond_to_dragon
 puts chosen_item

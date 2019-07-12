@@ -27,7 +27,7 @@ class Room < ActiveRecord::Base
     def enchantment_table(char)
         puts "You approach the enchantment table (colorful description)."
         prompt = TTY::Prompt.new
-        enchantment_table_item = prompt.select("There are potions lining the edge, and a glowing crystal ball.", %w(Potion Crystal_Ball Neither))
+        enchantment_table_item = prompt.select("There are potions lining the edge, and a glowing crystal ball.", %w(Potion Crystal_Ball))
         if enchantment_table_item == 'Potion'
             puts "Great choice. This potion will help you in your quest."
             item = self.items.find_by(name: "Health_Potion")
@@ -36,8 +36,6 @@ class Room < ActiveRecord::Base
             puts "You see something scaly in the crystal ball as you bring it closer."
             item = self.items.find_by(name: "Crystal_Ball")
             item.gets_picked_up_by(char)
-        elsif enchantment_table_item == 'Neither'
-            puts "After gazing at the table and the things around it for a while, you step away"
         end
         line_break
         bookcase(char)
@@ -45,7 +43,7 @@ class Room < ActiveRecord::Base
 
     def bookcase(char)
         prompt = TTY::Prompt.new
-        bookcase_item = prompt.select("You skim the bookcase, and see a bunch of old, dust-covered scrolls. Hiding underneath the scroll, you see a dagger.", %w(Spell_Scroll Dagger Neither))
+        bookcase_item = prompt.select("You skim the bookcase, and see a bunch of old, dust-covered scrolls. Hiding underneath the scroll, you see a dagger.", %w(Spell_Scroll Dagger))
         if bookcase_item == 'Spell_Scroll'
             puts "You pick up the scroll (colorful description)"
             item = self.items.find_by(name: "Spell_Scroll")
@@ -54,8 +52,6 @@ class Room < ActiveRecord::Base
             puts "This dagger looks sharp and ready for a dragon fight."
             item = self.items.find_by(name: "Dagger")
             item.gets_picked_up_by(char)
-        elsif bookcase_item == 'Neither'
-            puts "You notice that neither has been touched for a while by all the dust built up on the shelf."
         end
     end
 
