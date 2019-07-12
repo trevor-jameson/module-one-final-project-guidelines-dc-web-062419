@@ -59,7 +59,7 @@ class Character < ActiveRecord::Base
                                  \;'   /  ,' /  _  \  /  _  \   ,'/                    
                                        \   `'  / \  `'  / \  `.' /                     
                                         `.___,'   `.__,'   `.__,'  VZ" 
-            puts "It's a dragon! It looks angry."
+            puts "It's a dragon! It looks angry. You get to use one of your items to engage with the dragon. We hope you choose wisely."
         else 
             "You haven't picked up enough items."
         end
@@ -72,13 +72,13 @@ class Character < ActiveRecord::Base
 
     def interact_with_dragon(item)
         if item == "Dagger"
-            puts "You slay the dragon"
+            puts "You chose the Dagger! You and the dragon fight. The Dagger slices through the dragon's heart. You're officially a Dragon Slayer."
         elsif item == "Crystal_Ball"
-            puts "Sorry, ya died"
+            puts "The Crystal Ball can't help you right now. The dragon looks at you and breathes fire. This is the end of your quest."
         elsif item == "Health_Potion"
-            puts "???"
+            puts "You drink deeply from your Health Potion. You can feel your strength grow and the dragon senses it too. He bows to you and decides not to attack."
         elsif item == "Spell_Scroll"
-            puts "You befriend the dragon"
+            puts "You read from your Scroll. It's a spell to tame a dragon and you two become friends, happily ever after."
         end
     end
 

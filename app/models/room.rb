@@ -25,7 +25,7 @@ class Room < ActiveRecord::Base
     end
 
     def enchantment_table(char)
-        puts "You approach the enchantment table (colorful description)."
+        puts "You approach the enchantment table."
         prompt = TTY::Prompt.new
         enchantment_table_item = prompt.select("There are potions lining the edge, and a glowing crystal ball.", %w(Potion Crystal_Ball))
         if enchantment_table_item == 'Potion'
@@ -37,6 +37,16 @@ class Room < ActiveRecord::Base
             item = self.items.find_by(name: "Crystal_Ball")
             item.gets_picked_up_by(char)
         end
+        enchantment_table_item = prompt.select("There are potions lining the edge, and a glowing crystal ball. You get to pick one of these items and make it yours.", %w(Potion Crystal_Ball))
+            if enchantment_table_item == 'Potion'
+                puts "Great choice. This potion will help you in your quest."
+                item = self.items.find_by(name: "Health_Potion")
+                item.gets_picked_up_by(char)
+            elsif enchantment_table_item == 'Crystal_Ball'
+                puts "You see something scaly in the crystal ball as you bring it closer."
+                item = self.items.find_by(name: "Crystal_Ball")
+                item.gets_picked_up_by(char)
+            end
         line_break
         bookcase(char)
     end
@@ -61,5 +71,5 @@ class Room < ActiveRecord::Base
         locked_chest
         enchantment_table(char)
     end
-    
+
 end
