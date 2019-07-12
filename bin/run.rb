@@ -8,8 +8,14 @@ def line_break
     puts "\n"
 end
 
-puts "Welcome, young adventurer."
-puts "If you accept this quest..."
+def display_welcome_message
+    puts "Hello, young adventurer."
+    puts "It seems you have found yourself at the beginning of a rewarding quest."
+    puts "Should you accept this quest, a Magical Room shall make itself and its offerings available to you."
+    puts "Out of these magical items, you will be able to equip yourself in preparation for engaging with a mythical creature."
+end
+
+display_welcome_message
 
 line_break
 
