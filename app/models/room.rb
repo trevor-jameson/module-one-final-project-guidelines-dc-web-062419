@@ -44,7 +44,8 @@ class Room < ActiveRecord::Base
             item = self.items.find_by(name: "Health Potion")
             item.gets_picked_up_by(char)
         elsif enchantment_table_item == 'Crystal Ball'
-            puts "You see something scaly in the crystal ball as you bring it closer"
+            puts "You see something scaly in the crystal ball as you bring it closer."
+            item = self.items.find_by(name: "Crystal Ball")
             item.gets_picked_up_by(char)
         elsif enchantment_table_item == 'Both'
             puts "You notice the rings of dust around the potion and crystal ball you picked up"
@@ -60,16 +61,16 @@ class Room < ActiveRecord::Base
         puts "You skim the bookcase, and see a bunch of old, dust-covered scrolls."
         prompt = TTY::Prompt.new
         # if they pick up the scroll, they see dagger underneath and have option of picking it up
-        puts "Hiding underneath the scroll you see a dagger."
+        puts "Hiding underneath the scroll, you see a dagger."
         bookcase_item = gets.chomp
-        if bookcase_item == 'Health Potion'
-            puts "You pick up a potion (colorful description)"
-            # update potion
-            # and save
-        elsif bookcase_item == 'Crystal Ball'
-            puts "You see something scaly in the crystal ball as you bring it closer"
-            # update crystal ball
-            # and save
+        if bookcase_item == 'Spell Scroll'
+            puts "You pick up the scroll (colorful description)"
+            item = self.items.find_by(name: "Spell Scroll")
+            item.gets_picked_up_by(char)
+        elsif bookcase_item == 'Dagger'
+            puts "This dagger looks sharp and ready for a dragon fight."
+            item = self.items.find_by(name: "Dagger")
+            item.gets_picked_up_by(char)
         elsif bookcase_item == 'both'
             puts "You notice the rings of dust around the potion and crystal ball you picked up"
             # update with both

@@ -38,9 +38,31 @@ class Character < ActiveRecord::Base
         end
     end
 
-    def dragon_appears?
+    def dragon_appears
         item_array = self.items.map { |item| item.name }
-        binding.pry
+        if item_array.length >= 3
+            puts "You feel the room start to shake. Puffs of smoke appear from nowhere. From behind you, you hear a rumble, the start of a roar."
+            puts ",===:'.,            `-._                           
+            Art by                       `:.`---.__         `-._                       
+             John VanderZwaag              `:.     `--.         `.                     
+                                             \.        `.         `.                   
+                                     (,,(,    \.         `.   ____,-`.,                
+                                  (,'     `/   \.   ,--.___`.'                         
+                              ,  ,'  ,--.  `,   \.;'         `                         
+                               `{D, {    \  :    \;                                    
+                                 V,,'    /  /    //                                    
+                                 j;;    /  ,' ,-//.    ,---.      ,                    
+                                 \;'   /  ,' /  _  \  /  _  \   ,'/                    
+                                       \   `'  / \  `'  / \  `.' /                     
+                                        `.___,'   `.__,'   `.__,'  VZ" 
+            puts "It's a dragon! It looks angry."
+        else 
+            "You haven't picked up enough items."
+        end
+    end
+
+    def respond_to_dragon
+        puts self.item_inventory # need to test this
     end
 
 
