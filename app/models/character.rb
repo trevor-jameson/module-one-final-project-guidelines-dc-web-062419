@@ -40,7 +40,7 @@ class Character < ActiveRecord::Base
 
     def dragon_appears
         item_array = self.items.map { |item| item.name }
-        if item_array.length >= 3
+        if item_array.length >= 2
             puts "You feel the room start to shake. Puffs of smoke appear from nowhere. From behind you, you hear a rumble, the start of a roar."
             puts ",===:'.,            `-._                           
             Art by                       `:.`---.__         `-._                       

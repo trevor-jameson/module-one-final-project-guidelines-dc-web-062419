@@ -34,50 +34,63 @@ class Room < ActiveRecord::Base
     end
 
     def enchantment_table(char)
-        puts "You approach the enchantment table (colorful description)."
+        puts "You approach the Enchantment Table."
         prompt = TTY::Prompt.new
-        enchantment_table_item = prompt.select("There are potions lining the edge, and a glowing crystal ball.", %w(Potion Crystal_Ball Both))
+        enchantment_table_item = prompt.select("There are potions lining the edge, and a glowing crystal ball in the center. Which one do you choose?", %w(Potion Crystal_Ball Both Exit))
         # pick up potion, crystal ball, or both?
         # enchantment_table_item = gets.chomp
         if enchantment_table_item == 'Potion'
-            puts "You pick up a potion (colorful description)"
+            puts "Great choice. This potion will help you in your quest."
             item = self.items.find_by(name: "Health Potion")
             item.gets_picked_up_by(char)
+            bookcase(char)
         elsif enchantment_table_item == 'Crystal_Ball'
             puts "You see something scaly in the crystal ball as you bring it closer."
             item = self.items.find_by(name: "Crystal_Ball")
-            binding.pry
             item.gets_picked_up_by(char)
-        elsif enchantment_table_item == 'Both'
-            puts "You notice the rings of dust around the potion and crystal ball you picked up"
-            # update with both
-            # and save
+            bookcase(char)
+        # elsif enchantment_table_item == 'Both'
+        #     puts "You notice the rings of dust around the potion and crystal ball you picked up"
+        #     # update with both
+        #     # and save
+        elsif enchantment_table_item == "Exit"
+            exit
         else
             puts "After gazing at the table and the things around it for a while, you step away"
             # break out of this function loop thing
         end
     end
 
+    def next_step_after_table_item(char)
+        bookcase(char)
+    end
+
+    def next_step_after_bookcase_item(char)
+        enchantment_table(char)
+    end
+
     def bookcase(char)
-        puts "You skim the bookcase, and see a bunch of old, dust-covered scrolls."
+        puts "You skim the bookcase and see a bunch of old, dust-covered scrolls, as well as a ancient dagger."
         prompt = TTY::Prompt.new
-        # if they pick up the scroll, they see dagger underneath and have option of picking it up
-        puts "Hiding underneath the scroll, you see a dagger."
-        bookcase_item = gets.chomp
-        if bookcase_item == 'Spell Scroll'
+        bookcase_item = prompt.select("There are potions lining the edge, and a glowing crystal ball in the center. Which one do you choose?", %w(Spell_Scroll Dagger Both Exit))
+        # puts "Hiding underneath the scroll, you see a dagger."
+        # bookcase_item = gets.chomp
+        if bookcase_item == 'Spell_Scroll'
             puts "You pick up the scroll (colorful description)"
-            item = self.items.find_by(name: "Spell Scroll")
+            item = self.items.find_by(name: "Spell_Scroll")
             item.gets_picked_up_by(char)
+            next_step_after_bookcase_item(char)
         elsif bookcase_item == 'Dagger'
             puts "This dagger looks sharp and ready for a dragon fight."
             item = self.items.find_by(name: "Dagger")
             item.gets_picked_up_by(char)
+            next_step_after_bookcase_item(char)
         elsif bookcase_item == 'both'
             puts "You notice the rings of dust around the potion and crystal ball you picked up"
             # update with both
             # and save
         else
-            puts "After gazing at the table and the things around it for a while, you step away"
+            puts "After gazing at the table and the things around it for a while, you step away."
             # break out of this function loop thing
         end
     end
@@ -108,6 +121,10 @@ class Room < ActiveRecord::Base
     def bookcase_to_enchantment_table(char)
         enchantment_table(char)
     end
+    
+    def exit
+        puts "Goodbye. You could have been friends with a dragon."
+    end
 
     # # if from locked_chest
     # if @direction == 'left'
@@ -132,18 +149,21 @@ class Room < ActiveRecord::Base
             end
         elsif @direction == 'Table'
             enchantment_table(char)
+            puts "What would you like to do next?"
             # if they select bookcase
 
             # if they select locked_chest
         elsif @direction == 'Bookcase'
             bookcase(char)
-            # if they select locked_chest
+                        # if they select locked_chest
 
             # if they select enchantment table
         else
             start_from_entrance
         end
     end
+
+
     # from the chest
     ## def locked_chest
     ## def unlocked_chest

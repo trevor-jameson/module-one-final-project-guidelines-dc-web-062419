@@ -50,6 +50,7 @@ line_break
 # char.items << chosen_item
 entry_room = Room.find_by(name: "Grand Entrance")
 entry_room.navigate_from_the_entrance(char)
+char.dragon_appears
 
 # ### ROOM NAVIGATION ###
 # # def navigate_from_entrance
