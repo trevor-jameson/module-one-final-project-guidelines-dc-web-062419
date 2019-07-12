@@ -51,6 +51,9 @@ line_break
 entry_room = Room.find_by(name: "Grand Entrance")
 entry_room.navigate_from_the_entrance(char)
 char.dragon_appears
+chosen_item = char.respond_to_dragon
+puts chosen_item
+puts char.interact_with_dragon(chosen_item)
 
 # ### ROOM NAVIGATION ###
 # # def navigate_from_entrance

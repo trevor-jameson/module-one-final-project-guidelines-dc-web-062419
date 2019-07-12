@@ -1,3 +1,4 @@
+require 'pry'
 class Character < ActiveRecord::Base
     belongs_to :user
     belongs_to :room
@@ -29,11 +30,14 @@ class Character < ActiveRecord::Base
     end
 
     def item_inventory
-        items = self.items
-        if items.length == 0
+        self.items.map {|item| item.name}
+    end
+
+    def display_item_inventory
+        if item_inventory.length == 0
             "You haven't picked up any items yet."
         else
-            items_on_hand = items.map { |item| item.name }.join(" & ")
+            items_on_hand = item_inventory.join(" & ")
             "Right now, you have a " + items_on_hand
         end
     end
@@ -62,8 +66,20 @@ class Character < ActiveRecord::Base
     end
 
     def respond_to_dragon
-        puts self.item_inventory # need to test this
+        prompt = TTY::Prompt.new
+        dragon_item = prompt.select("What would you like to choose?", self.item_inventory)
     end
 
+    def interact_with_dragon(item)
+        if item == "Dagger"
+            puts "You slay the dragon"
+        elsif item == "Crystal_Ball"
+            puts "Sorry, ya died"
+        elsif item == "Health_Potion"
+            puts "???"
+        elsif item == "Spell_Scroll"
+            puts "You befriend the dragon"
+        end
+    end
 
 end
