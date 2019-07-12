@@ -23,7 +23,7 @@ class Room < ActiveRecord::Base
         prompt = TTY::Prompt.new
         enchantment_table_item = prompt.select("There are potions lining the edge, and a glowing crystal ball.", %w(Potion Crystal_Ball Neither))
         if enchantment_table_item == 'Potion'
-            puts "You pick up a potion (colorful description)"
+            puts "Great choice. This potion will help you in your quest."
             item = self.items.find_by(name: "Health_Potion")
             item.gets_picked_up_by(char)
         elsif enchantment_table_item == 'Crystal_Ball'
