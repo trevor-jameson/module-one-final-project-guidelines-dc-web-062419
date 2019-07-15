@@ -15,6 +15,19 @@ class Room < ActiveRecord::Base
     def start_from_entrance
         prompt = TTY::Prompt.new
         @direction = prompt.select("You look around the room and you see a chest to your left, an enchantment table in front, and a bookcase to your right.", %w(Move_to_locked_chest))
+
+        # Here're some different ways for accepting and validating user input
+        # puts "Hey pick either 1, or 2. Kay?"
+        # input = gets.chomp
+        # while input != "1" ||  input != "2"
+        #     puts "You dummy, that's not valid input!"
+        #     input = gets.chomp
+        # end
+        # loop do
+        #     if input == "1" || input == "2"
+        #         break
+        #     end
+        # end
         line_break
     end
 

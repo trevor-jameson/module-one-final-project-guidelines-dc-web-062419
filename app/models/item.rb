@@ -23,5 +23,4 @@ class Item < ActiveRecord::Base
         self.room = room
         self.save
     end
-
 end

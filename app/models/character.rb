@@ -10,12 +10,18 @@ class Character < ActiveRecord::Base
     # Method ought to be renamed to something more specific (ie. #choose_character)
     def self.gets_user_input
         prompt = TTY::Prompt.new
-        character = Character.all.map {|character| character.name}
+        characters = Character.all.map {|character| character.name}
         # This should be a seperate var from the instance.
-        @chosen_character = prompt.select("Choose the name of the character you'd like to use:", character)
+        @chosen_character = prompt.select("Choose the name of the character you'd like to use:", characters)
+
+        # This resolves the problem of @chosen_character being a string data type before being set to an instance
+        # found_character = prompt.select("Choose the name of the character you'd like to use:", characters)
+        # self.set_character_to_instance(found_character)
     end
 
+    # Could use .find_by instead of .where and you wouldn't need the first
     def self.set_character_to_instance
+        # @chosen_character = Character.find_by(name: @chosen_character)
         @chosen_character = Character.where(name: @chosen_character).first
     end
     
@@ -26,6 +32,13 @@ class Character < ActiveRecord::Base
         @chosen_character.save
         puts "You're now in the Grand Entrance"
     end
+    # Room agnostic version. Could also take a room instance as an arg (wouldn't have to find room in that case)
+    # def self.welcome_to_room(room_name)
+    #     puts "Welcome to the game, #{@chosen_character.name}!"
+    #     @chosen_character.room_id = Room.find_by(name: room_name).id 
+    #     @chosen_character.save
+    #     puts "You're now in the #{room_name}"
+    # end
 
     # Good method. Succinct and well-named.
     def item_inventory
@@ -75,6 +88,7 @@ class Character < ActiveRecord::Base
     def interact_with_dragon(item)
         if item == "Dagger"
             puts "You chose the Dagger! You and the dragon fight. The Dagger slices through the dragon's heart. You're officially a Dragon Slayer."
+            # flee_from_dragon
         elsif item == "Crystal_Ball"
             puts "The Crystal Ball can't help you right now. The dragon looks at you and breathes fire. This is the end of your quest."
         elsif item == "Health_Potion"
