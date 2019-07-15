@@ -1,3 +1,8 @@
+###### GENERAL NOTES ######
+# Games are hard and require lots of planning upfront. Especially 'choose-your-own-adventure' style with many options
+# What was your game's "win-condition"?
+# Deep call stacks can break. Be wary of allowing recursive menu chains.
+
 require_relative '../config/environment'
 require 'pry'
 require 'tty-prompt'

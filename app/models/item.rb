@@ -4,6 +4,7 @@ class Item < ActiveRecord::Base
 
     ### USE .UPDATE, & .CREATE
 
+    # Item search result and user input ought to be different vars. It's best practice.
     def self.get_character_item
         puts "Which one do you choose?"
         character_item = gets.chomp
@@ -16,6 +17,7 @@ class Item < ActiveRecord::Base
         self.save
     end
 
+    # You don't need the character instance here. You can set it to nil using only the attr_accessor
     def gets_dropped_by(character, room)
         self.character = nil
         self.room = room

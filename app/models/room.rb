@@ -24,6 +24,7 @@ class Room < ActiveRecord::Base
         line_break
     end
 
+    # Good use of TTY and assignment
     def enchantment_table(char)
         puts "You approach the enchantment table."
         prompt = TTY::Prompt.new

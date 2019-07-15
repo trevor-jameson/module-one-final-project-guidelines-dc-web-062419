@@ -1,4 +1,5 @@
 require 'pry'
+# Note: "char" is a reserved word in many languages, similarly to "class"
 class Character < ActiveRecord::Base
     belongs_to :user
     belongs_to :room
@@ -6,9 +7,11 @@ class Character < ActiveRecord::Base
 
     attr_accessor :chosen_character
 
+    # Method ought to be renamed to something more specific (ie. #choose_character)
     def self.gets_user_input
         prompt = TTY::Prompt.new
         character = Character.all.map {|character| character.name}
+        # This should be a seperate var from the instance.
         @chosen_character = prompt.select("Choose the name of the character you'd like to use:", character)
     end
 
@@ -16,6 +19,7 @@ class Character < ActiveRecord::Base
         @chosen_character = Character.where(name: @chosen_character).first
     end
     
+    # This could be abstracted to accept any room (with arg of string or instance)
     def self.welcome_to_entrance
         puts "Welcome to the game, #{@chosen_character.name}!"
         @chosen_character.room_id = Room.find_by(name: "Grand Entrance").id 
@@ -23,10 +27,12 @@ class Character < ActiveRecord::Base
         puts "You're now in the Grand Entrance"
     end
 
+    # Good method. Succinct and well-named.
     def item_inventory
         self.items.map {|item| item.name}
     end
 
+    # Good method. Has a single purpose and is well-named. Could set item_inventory to a var and reuse.
     def display_item_inventory
         if item_inventory.length == 0
             "You haven't picked up any items yet."
@@ -36,6 +42,7 @@ class Character < ActiveRecord::Base
         end
     end
 
+    # ASCII art is always a fun time!
     def dragon_appears
         item_array = self.items.map { |item| item.name }
         if item_array.length >= 2
@@ -64,6 +71,7 @@ class Character < ActiveRecord::Base
         dragon_item = prompt.select("What would you like to choose?", self.item_inventory)
     end
 
+    # You could make this decision a "choose-your-own-adventure" by calling helper method within each 
     def interact_with_dragon(item)
         if item == "Dagger"
             puts "You chose the Dagger! You and the dragon fight. The Dagger slices through the dragon's heart. You're officially a Dragon Slayer."
